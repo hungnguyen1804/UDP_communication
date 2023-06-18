@@ -1,33 +1,5 @@
 import socket
 
-def receive_image(server_address, server_port, save_filename):
-    # Tạo socket UDP
-    #server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    
-    # Gắn địa chỉ và cổng của server với socket
-    #server_socket.bind((server_address, server_port))
-    
-    # Nhận kích thước tệp ảnh
-   # buffer_size = 1024
-   # buffer = server_socket.recv(buffer_size)
-    file_size = int(buffer.decode())
-    print(f"Received image size: {file_size} bytes")
-    
-    # Nhận dữ liệu ảnh
-    received_size = 0
-    received_data = b""
-    while received_size < file_size:
-        data, _ = server_socket.recvfrom(buffer_size)
-        received_data += data
-        received_size += len(data)
-    
-    # Lưu dữ liệu ảnh vào tệp
-    with open(save_filename, "wb") as file:
-        file.write(received_data)
-    
-    print(f"Image received and saved as '{save_filename}'")
-
-
 def send_image(filename, server_address, server_port):
     # Tạo socket UDP
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
